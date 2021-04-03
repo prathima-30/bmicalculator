@@ -1,0 +1,119 @@
+<html>
+<head>
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+<style>
+	input{
+	 padding:5px;
+	 margin:5px;
+	 
+	}
+	
+    .button{
+        width: 100%;
+  background-color: #878f42;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+    }
+
+	#heading{
+		
+		color:rgb(182, 91, 39);
+		margin-top: 200px;
+
+	}
+
+    #button{
+        background-color: #70b2d1;
+  border-style: groove;
+    }
+
+	#solution{
+        border:black 2px solid;
+                padding:10px 100px 10px 60px;
+                margin-top: 30px;
+                margin-left:670px;
+                width:4%;
+                text-align: center;
+                background-color: rgb(175, 103, 61);
+                border-style: ridge;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+	#b{
+		background-image: url("p.jpg");
+	} 
+</style>
+	
+</head>
+<body id="b">
+	<div id="title"></div>
+	<div id="root" align="center"></div>	
+	<button id="solution" type="button" class="btn btn-primary btn-block" >RESULT</button>
+</body>
+
+</html>
+
+
+<script type="text/babel">
+class Title extends React.Component {
+		render() {
+			return (<h1 id="heading" align="center">CALCULATOR</h1>);
+		}
+	}
+	
+	ReactDOM.render(<Title />, document.getElementById("title"));
+		
+	class Input extends React.Component {
+		render() {
+			return (
+				<div>
+					<input type="number" name="first number"    placeholder="Enter First Number"/><br/>
+					<input type="number" name="second number"  placeholder="Enter Second Number"/><br/>
+					<button onClick={this.addition} > + </button>
+					<button onClick={this.subtraction} > - </button>
+					<button onClick={this.multiplication} > * </button>
+					<button onClick={this.division} > / </button>
+
+				</div>
+			);
+		}
+		
+		addition = () =>{
+			const num1 = document.getElementsByName("first number")[0].value;
+			const num2 = document.getElementsByName("second number")[0].value;
+			var n1 = parseInt(num1, 10);
+			var n2 = parseInt(num2, 10);
+	
+			document.getElementById("solution").innerHTML = n1+n2;
+		}
+		subtraction = () =>{
+			const num1 = document.getElementsByName("first number")[0].value;
+			const num2 = document.getElementsByName("second number")[0].value;
+			
+			document.getElementById("solution").innerHTML = num1-num2;
+		}
+		multiplication = () =>{
+			const num1 = document.getElementsByName("first number")[0].value;
+			const num2 = document.getElementsByName("second number")[0].value;
+		
+			document.getElementById("solution").innerHTML = num1 * num2;
+		}
+		division = () =>{
+			const num1 = document.getElementsByName("first number")[0].value;
+			const num2 = document.getElementsByName("second number")[0].value;
+		
+			document.getElementById("solution").innerHTML = num1 / num2;
+		}
+	}
+	
+
+	
+	ReactDOM.render(<Input />, document.getElementById("root"));	
+</script>

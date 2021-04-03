@@ -1,0 +1,107 @@
+<html>
+<head>
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+<style>
+    #b {
+        /* background-color: rgb(227, 236, 233); */
+        font-size: 20px;
+        background-image: url("p2.jpg")
+        
+    }
+
+    #button{
+        background-color: #70b2d1;
+  border-style: groove;
+  
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+#i{
+    color: black;
+}
+
+	input{
+	 padding:5px;
+	 margin:5px;
+     align-self: center;
+     font-family: Georgia, 'Times New Roman', Times, serif;
+     color: black;
+	 
+	}
+
+    #root{
+        margin-top: 10%;
+	}
+
+	#solution{
+        border:black 2px solid;
+                padding:10px 100px 10px 60px;
+                margin-top: 30px;
+                margin-left:650px;
+                width:4%;
+                text-align: center;
+        } 
+				
+</style>
+	
+</head>
+<body id="b">
+	<div id="title"></div>
+	
+	<div id="root" align="center"></div>	
+	<div id="solution">Result</div>
+</body>
+
+</html>
+
+
+<script type="text/babel">
+class Title extends React.Component {
+		render() {
+			return (<h1 id="hd">BMI CALCULATOR</h1>);
+		}
+	}
+	
+ReactDOM.render(<Title />, document.getElementById("title"));
+		
+class Input extends React.Component {
+	render() {
+		return (
+				<div>	
+					<input id="i" type="number" name="weight" placeholder="Enter the weight"/><br/>
+					<input type="number" name="feet"  placeholder="Enter Feets"/><br/>
+					<button id="button" onClick={this.result} > Calculate BMI </button>
+				</div>
+			);
+		}
+		
+		result = () =>{
+			const weight = document.getElementsByName("weight")[0].value;
+			const feet = document.getElementsByName("feet")[0].value;
+
+		var r = weight/((feet/3.281)*(feet/3.281))
+
+    if(r < 16){
+		document.getElementById("solution").innerHTML ="YOU ARE UNDERWEIGHT "+r;}
+  
+    else if(r>16 && r<25){
+        document.getElementById("solution").innerHTML ="YOU ARE NORMAL "+r
+    }
+    else if(r>25 && r<30){
+        document.getElementById("solution").innerHTML ="YOU ARE OVER WEIGHTED "+r
+    }
+    else if (r>30){
+	    document.getElementById("solution").innerHTML ="YOU ARE OBESE "+r
+    }
+		}
+  }
+	
+	ReactDOM.render(<Input />, document.getElementById("root"));	
+</script>
